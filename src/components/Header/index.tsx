@@ -21,7 +21,7 @@ export function Header() {
 
   return (
     <Container>
-      <Header>
+      <HeaderContent>
         <h1>
           <Link to="/">TEMdiTUDO Store</Link>
         </h1>
@@ -65,7 +65,7 @@ export function Header() {
             </Link>
           </CartWidget>
         )}
-      </Header>
+      </HeaderContent>
     </Container>
   );
 }
