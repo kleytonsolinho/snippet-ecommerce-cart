@@ -39,6 +39,7 @@ export function MyCartContextProvider({ children }: MyCartProviderProps) {
 
   function clearCart() {
     setCart([]);
+    setTotal([]);
   }
 
   return (
