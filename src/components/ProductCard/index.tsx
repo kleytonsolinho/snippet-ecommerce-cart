@@ -1,3 +1,4 @@
+import { FiShoppingCart } from 'react-icons/fi';
 import { useCart } from '../../hooks/useCart';
 
 import { Container } from './styles';
@@ -22,6 +23,7 @@ export function ProductCard({ image, name, price, stock }: CardProps) {
         type="button"
         onClick={() => handleAddProduct(image, name, price)}
       >
+        <FiShoppingCart className="icon" />
         Adicionar ao carrinho
       </button>
     </Container>

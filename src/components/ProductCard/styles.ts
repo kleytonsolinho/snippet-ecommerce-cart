@@ -55,4 +55,8 @@ export const Container = styled.div`
       filter: brightness(1.2);
     }
   }
+
+  button .icon {
+    margin-right: 10px;
+  }
 `;
