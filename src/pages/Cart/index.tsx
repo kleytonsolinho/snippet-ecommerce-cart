@@ -25,10 +25,10 @@ export function Cart() {
     <>
       <Container>
         <Header />
-        {cart.length <= 0 ? (
-          <EmptyCart />
-        ) : (
-          <Content>
+        <Content>
+          {cart.length <= 0 ? (
+            <EmptyCart />
+          ) : (
             <ListCart>
               <thead>
                 <tr>
@@ -88,8 +88,8 @@ export function Cart() {
                 <h1>Total: R$ {vTotal},00</h1>
               </Checkout>
             </ListCart>
-          </Content>
-        )}
+          )}
+        </Content>
       </Container>
     </>
   );
