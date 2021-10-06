@@ -12,10 +12,6 @@ export const Content = styled.div`
   max-width: 1280px;
   height: 100%;
   margin: 0 auto;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 `;
 
 export const ProductList = styled.div`
