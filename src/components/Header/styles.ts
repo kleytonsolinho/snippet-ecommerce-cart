@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  width: 100%;
-  max-width: 1280px;
+export const Container = styled.section`
+  width: 100vw;
   height: 75px;
   background-color: var(--primary-color);
   padding: 0 2rem;
@@ -16,6 +15,12 @@ export const Container = styled.div`
   Cart:hover {
     animation: fadeIn 1s ease-in-out;
   }
+`;
+
+export const HeaderContent = styled.div`
+  width: 100%;
+  max-width: 1280px;
+  height: 100%;
 `;
 
 export const Cart = styled.div`
