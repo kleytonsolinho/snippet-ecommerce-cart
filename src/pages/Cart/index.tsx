@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
-import { FiTrash2 } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
+
+import { FiArrowLeft, FiTrash2 } from 'react-icons/fi';
 import { EmptyCart } from '../../components/EmptyCart';
 
 import { Header } from '../../components/Header';
@@ -72,7 +74,12 @@ export function Cart() {
               </tbody>
               <Checkout>
                 <div>
-                  <button type="button">Ir para Checkout</button>
+                  <Link to="/">
+                    <button type="button">
+                      <FiArrowLeft className="iconTrash" />
+                      Voltar para loja
+                    </button>
+                  </Link>
                   <button type="button" onClick={() => clearCart()}>
                     <FiTrash2 className="iconTrash" />
                     Limpar Carrinho
