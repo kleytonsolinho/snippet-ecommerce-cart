@@ -23,7 +23,7 @@ export function Cart() {
     <>
       <Container>
         <Header />
-        {cart.length >= 0 ? (
+        {cart.length <= 0 ? (
           <EmptyCart />
         ) : (
           <Content>
