@@ -74,16 +74,15 @@ export const CartWidget = styled.div`
     font-weight: bold;
   }
 
-  .items {
+  .itens {
     display: flex;
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
-    overflow-y: scroll;
     border-bottom: 1px solid #ddd;
   }
 
-  .items li {
+  .itens li {
     width: 100%;
     margin: 5px 0;
     display: flex;
@@ -98,7 +97,7 @@ export const CartWidget = styled.div`
     }
   }
 
-  .items li img {
+  .itens li img {
     width: 70px;
     border-radius: 7px;
   }

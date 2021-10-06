@@ -3,11 +3,10 @@ import styled from 'styled-components';
 export const Container = styled.section`
   width: 100vw;
   height: 100vh;
-  padding: 0 2rem;
   margin: 0 auto;
 `;
 
-export const Content = styled.div`
+export const Content = styled.section`
   width: 100%;
   max-width: 1280px;
   height: 100%;
@@ -19,5 +18,5 @@ export const ProductList = styled.div`
   padding-top: 110px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
+  grid-gap: 80px;
 `;
