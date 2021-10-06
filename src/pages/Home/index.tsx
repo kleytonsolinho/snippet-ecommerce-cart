@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import api from '../../services/api.js';
 
 import { Header } from '../../components/Header';
-import { Container, ProductList } from './styles';
+import { Container, Content, ProductList } from './styles';
 
 import { ProductCard } from '../../components/ProductCard';
 
@@ -21,18 +21,20 @@ export function Home() {
 
   return (
     <Container>
-      <Header />
-      <ProductList>
-        {products.map(product => (
-          <ProductCard
-            key={product.id}
-            image={product.image}
-            name={product.name}
-            price={product.price}
-            stock={product.stock}
-          />
-        ))}
-      </ProductList>
+      <Content>
+        <Header />
+        <ProductList>
+          {products.map(product => (
+            <ProductCard
+              key={product.id}
+              image={product.image}
+              name={product.name}
+              price={product.price}
+              stock={product.stock}
+            />
+          ))}
+        </ProductList>
+      </Content>
     </Container>
   );
 }

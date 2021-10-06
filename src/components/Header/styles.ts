@@ -11,16 +11,17 @@ export const Container = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  Cart:hover {
-    animation: fadeIn 1s ease-in-out;
-  }
 `;
 
 export const HeaderContent = styled.div`
   width: 100%;
   max-width: 1280px;
   height: 100%;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export const Cart = styled.div`
