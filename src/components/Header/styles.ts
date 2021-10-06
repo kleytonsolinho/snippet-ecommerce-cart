@@ -7,10 +7,6 @@ export const Container = styled.section`
   padding: 0 2rem;
   position: fixed;
   z-index: 9;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 `;
 
 export const HeaderContent = styled.div`

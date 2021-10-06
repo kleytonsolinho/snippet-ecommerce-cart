@@ -21,8 +21,8 @@ export function Home() {
 
   return (
     <Container>
+      <Header />
       <Content>
-        <Header />
         <ProductList>
           {products.map(product => (
             <ProductCard
