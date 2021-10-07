@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { FiShoppingCart } from 'react-icons/fi';
+import { FiShoppingCart, FiTrash2 } from 'react-icons/fi';
 
 import { useCart } from '../../hooks/useCart';
 
 import { Container, HeaderContent, Cart, CartWidget } from './styles';
 
 export function Header() {
-  const { cart } = useCart();
+  const { cart, clearCart } = useCart();
   const [isVisible, setIsVisible] = useState(false);
 
   function hoverCart() {
@@ -47,22 +47,28 @@ export function Header() {
               <li>Qtd</li>
               <li>Valor</li>
             </ul>
-            <div>
+            <div className="listCart">
               {cart.map(product => (
-                <ul className="itens">
-                  <li key={product.id}>
-                    <li>
-                      <img src={product.image} alt="" />
-                    </li>
-                    <li>1</li>
-                    <li>R$ {product.price}</li>
+                <ul key={product.newId} className="itens">
+                  <li>
+                    <img src={product.image} alt="" />
                   </li>
+                  <li>{product.amount}</li>
+                  <li>R$ {product.valor}.00</li>
                 </ul>
               ))}
             </div>
-            <Link to="/cart">
-              <button type="button">Ir pro carrinho</button>
-            </Link>
+            <div className="btns">
+              <Link to="/cart">
+                <button type="button">
+                  <FiShoppingCart className="icon" />
+                  Ir pro carrinho
+                </button>
+              </Link>
+              <button type="button" onClick={() => clearCart()}>
+                <FiTrash2 />
+              </button>
+            </div>
           </CartWidget>
         )}
       </HeaderContent>

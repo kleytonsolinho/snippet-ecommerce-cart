@@ -4,14 +4,16 @@ import { useCart } from '../../hooks/useCart';
 import { Container } from './styles';
 
 interface CardProps {
+  id: string;
   image: string;
   name: string;
   price: string;
   stock: number;
 }
 
-export function ProductCard({ image, name, price, stock }: CardProps) {
+export function ProductCard({ id, image, name, price, stock }: CardProps) {
   const { handleAddProduct } = useCart();
+  const amount = 1;
 
   return (
     <Container>
@@ -21,7 +23,7 @@ export function ProductCard({ image, name, price, stock }: CardProps) {
       <p>Quantidade: {stock}</p>
       <button
         type="button"
-        onClick={() => handleAddProduct(image, name, price)}
+        onClick={() => handleAddProduct(id, image, name, price, stock, amount)}
       >
         <FiShoppingCart className="icon" />
         Adicionar ao carrinho

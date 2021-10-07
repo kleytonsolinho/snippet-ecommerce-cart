@@ -1,45 +1,83 @@
 import { createContext, useState, ReactNode } from 'react';
 
 interface Cart {
-  id: number;
-  name: string;
-  image: string;
-  price: string;
-  stock: number;
+  id: string;
   createdAt: string;
+  name: string;
+  price: string;
+  image: string;
+  stock: number;
+  amount: number;
 }
 
 interface MyCartProviderProps {
   children: ReactNode;
 }
 
-export const MyCartContext = createContext<Cart[] | any>(undefined);
+export const MyCartContext = createContext(undefined);
 
 export function MyCartContextProvider({ children }: MyCartProviderProps) {
   const [cart, setCart] = useState([]);
-  const [total, setTotal] = useState([]);
 
-  function handleAddProduct(image: string, name: string, price: string) {
-    const itemCart = { image, name, price };
-    const valor = Number(price);
-
-    setCart([...cart, itemCart]);
-    setTotal([...total, valor]);
+  function AddQTD(newId: number) {
+    const addQtd = cart.find(v => v.newId === newId);
+    const valor = addQtd.valor / addQtd.amount;
+    addQtd.amount += 1;
+    addQtd.valor += valor;
+    setCart([...cart]);
   }
 
-  function handleRemoveProduct(posicao: number) {
+  function RemoveQTD(newId: number, posicao: number) {
+    const removeQtd = cart.find(v => v.newId === newId);
+
+    if (removeQtd.amount === 1) {
+      handleRemoveProduct(posicao);
+      return;
+    }
+
+    const valor = removeQtd.valor / removeQtd.amount;
+    removeQtd.amount -= 1;
+    removeQtd.valor -= valor;
+    setCart([...cart]);
+  }
+
+  function handleAddProduct(
+    id: Cart,
+    image: Cart,
+    name: Cart,
+    price: Cart,
+    stock: Cart,
+    amount: number,
+  ): void {
+    const valor = Number(price);
+    const newId = Number(id);
+
+    if (cart.length <= 0) {
+      const itemCart = { newId, image, name, valor, stock, amount };
+      setCart([itemCart]);
+      return;
+    }
+
+    if (cart.find(v => v.newId === newId)) {
+      const addQtd = cart.find(v => v.newId === newId);
+      addQtd.amount += 1;
+      addQtd.valor += valor;
+      return;
+    }
+
+    const itemCart = { newId, image, name, valor, stock, amount };
+    setCart([...cart, itemCart]);
+  }
+
+  function handleRemoveProduct(posicao: number): void {
     const newlistCart = [...cart];
-    const totalList = [...total];
 
     newlistCart.splice(posicao, 1);
-    totalList.splice(posicao, 1);
     setCart(newlistCart);
-    setTotal(totalList);
   }
 
-  function clearCart() {
+  function clearCart(): void {
     setCart([]);
-    setTotal([]);
   }
 
   return (
@@ -47,7 +85,8 @@ export function MyCartContextProvider({ children }: MyCartProviderProps) {
       value={{
         cart,
         setCart,
-        total,
+        AddQTD,
+        RemoveQTD,
         handleAddProduct,
         handleRemoveProduct,
         clearCart,

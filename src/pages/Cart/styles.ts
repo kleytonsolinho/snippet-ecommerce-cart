@@ -14,7 +14,7 @@ export const Content = styled.section`
   margin: 0 auto;
 `;
 
-export const ListCart = styled.table`
+export const ListCart = styled.div`
   width: 100%;
   height: auto;
   background: #ffffff;
@@ -28,25 +28,53 @@ export const ListCart = styled.table`
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
+`;
 
-  thead {
-    width: 800px;
-    color: #999;
-    text-align: left;
-  }
+export const ListHeader = styled.div`
+  width: 100%;
+  height: 50px;
 
-  th {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  ul {
+    width: 100%;
+    list-style: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
     margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #999;
   }
+`;
 
-  tr {
-    width: 800px;
+export const ListContent = styled.div`
+  width: 100%;
+  height: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  ul {
+    width: 100%;
+    list-style: none;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
-    border-bottom: 1px solid #eee;
+
+    font-weight: bold;
+    font-size: 1rem;
+    color: #999;
+    border-radius: 10px;
 
     transition: 0.2s all;
 
@@ -55,25 +83,36 @@ export const ListCart = styled.table`
     }
   }
 
-  td {
-    padding: 12px;
-    max-width: 20%;
-  }
-
-  img {
+  ul li img {
     width: 140px;
     border-radius: 10px;
   }
 
-  button {
+  ul li .amount {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h3 {
+      margin: 0 10px;
+      font-size: 1.5rem;
+    }
+
+    .amount-icon {
+      color: var(--primary-color);
+      font-size: 1.5rem;
+    }
+  }
+
+  ul li button {
     background: transparent;
     border: none;
   }
 
-  .icon {
+  ul li .icon {
     font-size: 2rem;
     cursor: pointer;
-    color: #999;
+    color: var(--primary-color);
   }
 `;
 
@@ -90,6 +129,10 @@ export const Checkout = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  h1 {
+    font-size: 1.5rem;
+  }
 
   div {
     width: 50%;
