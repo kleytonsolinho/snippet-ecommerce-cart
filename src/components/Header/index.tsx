@@ -11,11 +11,11 @@ export function Header() {
   const { cart, handleClearCart } = useCart();
   const [isVisible, setIsVisible] = useState(false);
 
-  function hoverCart() {
+  function onHover(): void {
     setIsVisible(true);
   }
 
-  function lostHoverCart() {
+  function outHover(): void {
     setIsVisible(false);
   }
 
@@ -26,10 +26,7 @@ export function Header() {
           <Link to="/">TEMdiTUDO Store</Link>
         </h1>
         <Link to="/cart">
-          <Cart
-            onMouseEnter={() => hoverCart()}
-            onMouseLeave={() => lostHoverCart()}
-          >
+          <Cart onMouseEnter={() => onHover()} onMouseLeave={() => outHover()}>
             <div>
               <h3>Meu Carrinho</h3>
               <span>{cart.length} produtos</span>
@@ -39,8 +36,8 @@ export function Header() {
         </Link>
         {isVisible && (
           <CartWidget
-            onMouseEnter={() => hoverCart()}
-            onMouseLeave={() => lostHoverCart()}
+            onMouseEnter={() => onHover()}
+            onMouseLeave={() => outHover()}
           >
             <ul className="header">
               <li>Prod</li>

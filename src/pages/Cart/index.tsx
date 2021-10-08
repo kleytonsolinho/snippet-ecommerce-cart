@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 
 import { FiArrowLeft, FiTrash2 } from 'react-icons/fi';
 import { HiOutlineMinusCircle, HiOutlinePlusCircle } from 'react-icons/hi';
-import { EmptyCart } from '../../components/EmptyCart';
 
+import { EmptyCart } from '../../components/EmptyCart';
 import { Header } from '../../components/Header';
+
 import { useCart } from '../../hooks/useCart';
 
 import {
@@ -28,7 +29,7 @@ export function Cart() {
   const [subTotal, setSubTotal] = useState(0);
 
   useEffect(() => {
-    const total = cart.map(product => product.subtotal);
+    const total = cart.map(item => item.subtotal);
 
     if (total.length >= 1) {
       setSubTotal(total.reduce((valorTotal, item) => valorTotal + item));

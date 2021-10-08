@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react';
 import api from '../../services/api.js';
 
 import { Header } from '../../components/Header';
-import { Container, Content, ProductList } from './styles';
-
 import { ProductCard } from '../../components/ProductCard';
+
+import { Container, Content, ProductList } from './styles';
 
 export function Home() {
   const [products, setProducts] = useState([]);
