@@ -58,7 +58,7 @@ export function Cart() {
                 {cart.map((product, i: number) => {
                   const y: number = i + 1;
                   return (
-                    <ul key={product.newId}>
+                    <ul key={product.id}>
                       <li>
                         <h2>{y}</h2>
                       </li>
@@ -72,7 +72,7 @@ export function Cart() {
                         <div className="amount">
                           <button
                             type="button"
-                            onClick={() => handleRemoveAmount(product.newId)}
+                            onClick={() => handleRemoveAmount(product.id)}
                           >
                             <HiOutlineMinusCircle
                               data-test="remove-btn"
@@ -82,7 +82,7 @@ export function Cart() {
                           <h3>{product.amount}</h3>
                           <button
                             type="button"
-                            onClick={() => handleAddAmount(product.newId)}
+                            onClick={() => handleAddAmount(product.id)}
                           >
                             <HiOutlinePlusCircle
                               data-test="add-btn"
@@ -97,7 +97,7 @@ export function Cart() {
                       <li>
                         <button
                           type="button"
-                          onClick={() => handleRemoveProduct(product.newId)}
+                          onClick={() => handleRemoveProduct(product.id)}
                         >
                           <FiTrash2 className="icon" />
                         </button>

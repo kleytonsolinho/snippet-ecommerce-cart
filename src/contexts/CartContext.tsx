@@ -1,14 +1,6 @@
 import { createContext, useState, ReactNode } from 'react';
 
-interface Cart {
-  id: string;
-  createdAt: string;
-  name: string;
-  price: string;
-  image: string;
-  stock: number;
-  amount: number;
-}
+import { CartInterface } from '../interfaces';
 
 interface CartProviderProps {
   children: ReactNode;
@@ -19,8 +11,8 @@ export const CartContext = createContext(undefined);
 export function CartContextProvider({ children }: CartProviderProps) {
   const [cart, setCart] = useState([]);
 
-  function handleAddAmount(newId: number): void {
-    const index = cart.indexOf(cart.find(item => item.newId === newId));
+  function handleAddAmount(id: number): void {
+    const index = cart.indexOf(cart.find(item => item.id === id));
     const addAmountItem = [...cart];
 
     addAmountItem[index].amount += 1;
@@ -29,12 +21,12 @@ export function CartContextProvider({ children }: CartProviderProps) {
     setCart(addAmountItem);
   }
 
-  function handleRemoveAmount(newId: number): void {
-    const index = cart.indexOf(cart.find(item => item.newId === newId));
+  function handleRemoveAmount(id: number): void {
+    const index = cart.indexOf(cart.find(item => item.id === id));
     const removeAmountItem = [...cart];
 
     if (removeAmountItem[index].amount === 1) {
-      handleRemoveProduct(newId);
+      handleRemoveProduct(id);
       return;
     }
 
@@ -45,34 +37,34 @@ export function CartContextProvider({ children }: CartProviderProps) {
   }
 
   function handleAddProduct(
-    id: Cart,
-    image: Cart,
-    name: Cart,
-    price: Cart,
-    stock: Cart,
-    amount: number,
+    oldId: CartInterface,
+    image: CartInterface,
+    name: CartInterface,
+    price: CartInterface,
+    stock: CartInterface,
+    amount: CartInterface,
   ): void {
     const valor = Number(price);
-    const newId = Number(id);
+    const id = Number(oldId);
     const subtotal = valor;
 
     if (cart.length <= 0) {
-      const itemCart = { newId, image, name, valor, stock, amount, subtotal };
+      const itemCart = { id, image, name, valor, stock, amount, subtotal };
       setCart([itemCart]);
       return;
     }
 
-    if (cart.find(item => item.newId === newId)) {
-      handleAddAmount(newId);
+    if (cart.find(item => item.id === id)) {
+      handleAddAmount(id);
       return;
     }
 
-    const itemCart = { newId, image, name, valor, stock, amount, subtotal };
+    const itemCart = { id, image, name, valor, stock, amount, subtotal };
     setCart([...cart, itemCart]);
   }
 
-  function handleRemoveProduct(newId: number): void {
-    const index = cart.indexOf(cart.find(item => item.newId === newId));
+  function handleRemoveProduct(id: number): void {
+    const index = cart.indexOf(cart.find(item => item.id === id));
     const newlistCart = [...cart];
 
     newlistCart.splice(index, 1);

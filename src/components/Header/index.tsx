@@ -49,7 +49,7 @@ export function Header() {
             </ul>
             <div className="listCart">
               {cart.map(product => (
-                <ul key={product.newId} className="itens">
+                <ul key={product.id} className="itens">
                   <li>
                     <img src={product.image} alt="" />
                   </li>
