@@ -18,15 +18,20 @@ import {
 } from './styles';
 
 export function Cart() {
-  const { cart, AddQTD, RemoveQTD, handleRemoveProduct, clearCart } = useCart();
-  const [vTotal, setvTotal] = useState(0);
+  const {
+    cart,
+    handleAddAmount,
+    handleRemoveAmount,
+    handleRemoveProduct,
+    handleClearCart,
+  } = useCart();
+  const [subTotal, setSubTotal] = useState(0);
 
   useEffect(() => {
-    const total = cart.map(product => product.valor);
+    const total = cart.map(product => product.subtotal);
+
     if (total.length >= 1) {
-      setvTotal(total.reduce((valorTotal, item) => valorTotal + item));
-    } else {
-      setvTotal(0);
+      setSubTotal(total.reduce((valorTotal, item) => valorTotal + item));
     }
   }, [cart]);
 
@@ -67,7 +72,7 @@ export function Cart() {
                         <div className="amount">
                           <button
                             type="button"
-                            onClick={() => RemoveQTD(product.newId, i)}
+                            onClick={() => handleRemoveAmount(product.newId)}
                           >
                             <HiOutlineMinusCircle
                               data-test="remove-btn"
@@ -77,7 +82,7 @@ export function Cart() {
                           <h3>{product.amount}</h3>
                           <button
                             type="button"
-                            onClick={() => AddQTD(product.newId)}
+                            onClick={() => handleAddAmount(product.newId)}
                           >
                             <HiOutlinePlusCircle
                               data-test="add-btn"
@@ -87,12 +92,12 @@ export function Cart() {
                         </div>
                       </li>
                       <li>
-                        <h3>R$ {product.valor}.00</h3>
+                        <h3>R$ {product.subtotal}.00</h3>
                       </li>
                       <li>
                         <button
                           type="button"
-                          onClick={() => handleRemoveProduct(i)}
+                          onClick={() => handleRemoveProduct(product.newId)}
                         >
                           <FiTrash2 className="icon" />
                         </button>
@@ -109,12 +114,12 @@ export function Cart() {
                       Voltar para loja
                     </button>
                   </Link>
-                  <button type="button" onClick={() => clearCart()}>
+                  <button type="button" onClick={() => handleClearCart()}>
                     <FiTrash2 className="iconTrash" />
                     Limpar Carrinho
                   </button>
                 </div>
-                <h1>Total: R$ {vTotal},00</h1>
+                <h1>Total: R$ {subTotal},00</h1>
               </Checkout>
             </ListCart>
           )}

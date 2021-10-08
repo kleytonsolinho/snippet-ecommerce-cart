@@ -8,7 +8,7 @@ import { useCart } from '../../hooks/useCart';
 import { Container, HeaderContent, Cart, CartWidget } from './styles';
 
 export function Header() {
-  const { cart, clearCart } = useCart();
+  const { cart, handleClearCart } = useCart();
   const [isVisible, setIsVisible] = useState(false);
 
   function hoverCart() {
@@ -65,7 +65,7 @@ export function Header() {
                   Ir pro carrinho
                 </button>
               </Link>
-              <button type="button" onClick={() => clearCart()}>
+              <button type="button" onClick={() => handleClearCart()}>
                 <FiTrash2 />
               </button>
             </div>
