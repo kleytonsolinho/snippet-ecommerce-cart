@@ -11,17 +11,17 @@ export const CartContext = createContext(undefined);
 export function CartContextProvider({ children }: CartProviderProps) {
   const [cart, setCart] = useState([]);
 
-  function handleAddAmount(id: number): void {
+  function handleAddAmount(id): void {
     const index = cart.indexOf(cart.find(item => item.id === id));
     const addAmountItem = [...cart];
 
     addAmountItem[index].amount += 1;
-    addAmountItem[index].subtotal += addAmountItem[index].valor;
+    addAmountItem[index].subtotal += addAmountItem[index].price;
 
     setCart(addAmountItem);
   }
 
-  function handleRemoveAmount(id: number): void {
+  function handleRemoveAmount(id): void {
     const index = cart.indexOf(cart.find(item => item.id === id));
     const removeAmountItem = [...cart];
 
@@ -31,25 +31,24 @@ export function CartContextProvider({ children }: CartProviderProps) {
     }
 
     removeAmountItem[index].amount -= 1;
-    removeAmountItem[index].subtotal -= removeAmountItem[index].valor;
+    removeAmountItem[index].subtotal -= removeAmountItem[index].price;
 
     setCart(removeAmountItem);
   }
 
   function handleAddProduct(
-    oldId: CartInterface,
+    id: CartInterface,
     image: CartInterface,
     name: CartInterface,
-    price: CartInterface,
+    priceStr: CartInterface,
     stock: CartInterface,
     amount: CartInterface,
   ): void {
-    const valor = Number(price);
-    const id = Number(oldId);
-    const subtotal = valor;
+    const price = Number(priceStr);
+    const subtotal = price;
 
     if (cart.length <= 0) {
-      const itemCart = { id, image, name, valor, stock, amount, subtotal };
+      const itemCart = { id, image, name, price, stock, amount, subtotal };
       setCart([itemCart]);
       return;
     }
@@ -59,11 +58,11 @@ export function CartContextProvider({ children }: CartProviderProps) {
       return;
     }
 
-    const itemCart = { id, image, name, valor, stock, amount, subtotal };
+    const itemCart = { id, image, name, price, stock, amount, subtotal };
     setCart([...cart, itemCart]);
   }
 
-  function handleRemoveProduct(id: number): void {
+  function handleRemoveProduct(id): void {
     const index = cart.indexOf(cart.find(item => item.id === id));
     const newlistCart = [...cart];
 

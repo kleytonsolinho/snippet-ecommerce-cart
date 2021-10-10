@@ -1,8 +1,8 @@
 export interface CartInterface {
-  oldId: string;
+  id: string;
+  image: string;
   name: string;
   price: string;
-  image: string;
   stock: number;
   amount: number;
 }

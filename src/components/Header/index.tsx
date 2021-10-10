@@ -51,7 +51,7 @@ export function Header() {
                     <img src={product.image} alt="" />
                   </li>
                   <li>{product.amount}</li>
-                  <li>R$ {product.valor}.00</li>
+                  <li>R$ {product.price}.00</li>
                 </ul>
               ))}
             </div>
